@@ -1,0 +1,62 @@
+{
+    "products":[
+        {
+          "id": 1,
+          "product_name": "Product 1",
+          "brand_name": "Brand A",
+          "price": 19.99,
+          "discount": 0.10,
+          "category": "Electronics",
+          "product_images": ["image1.jpg", "image2.jpg"],
+          "description": "This is Product 1 - a great electronic item.",
+          "rating": 4.5,
+          "tags": ["electronics", "gadgets", "smart"],
+          "deliver_by": "2023-07-31",
+          "number_of_stock": 100
+        },
+        {
+          "id": 2,
+          "product_name": "Product 2",
+          "brand_name": "Brand B",
+          "price": 29.99,
+          "discount": 0.05,
+          "category": "Fashion",
+          "product_images": ["image3.jpg", "image4.jpg"],
+          "description": "Product 2 - a fashionable clothing item.",
+          "rating": 4.2,
+          "tags": ["fashion", "clothing", "style"],
+          "deliver_by": "2023-08-15",
+          "number_of_stock": 50
+        },
+        {
+          "id": 3,
+          "product_name": "Product 3",
+          "brand_name": "Brand C",
+          "price": 9.99,
+          "discount": 0.20,
+          "category": "Home",
+          "product_images": ["image5.jpg", "image6.jpg"],
+          "description": "Product 3 - a beautiful home decor item.",
+          "rating": 4.8,
+          "tags": ["home", "decor", "interior"],
+          "deliver_by": "2023-08-05",
+          "number_of_stock": 75
+        },
+        {
+          "id": 4,
+          "product_name": "Product 4",
+          "brand_name": "Brand D",
+          "price": 49.99,
+          "discount": 0.15,
+          "category": "Sports",
+          "product_images": ["image7.jpg", "image8.jpg"],
+          "description": "Product 4 - a high-quality sports and fitness item.",
+          "rating": 4.9,
+          "tags": ["sports", "fitness", "exercise"],
+          "deliver_by": "2023-07-25",
+          "number_of_stock": 30
+        }
+      ]
+      
+    
+}
