@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "json-serve": "json-server --watch ./Data/db.json --port 4000"
+    "json-serve": "json-server --watch ./Data/data.js --port 4000"
   },
   "dependencies": {
     "@types/node": "20.4.2",
