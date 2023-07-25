@@ -1,10 +1,12 @@
 "use client";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 // import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import Dropdown from "../DropDown/DropDown";
 import { ComboboxDemo } from "../CombBox/ComboBox";
+import { ScrollArea } from "../ui/scroll-area";
+import { CommandSeparator } from "../ui/command";
 
 function SidebarSheet() {
   //   const router = useRouter();
@@ -53,6 +55,10 @@ function SidebarSheet() {
     };
     getCategories();
   }, []);
+
+  const tags = Array.from({ length: 50 }).map(
+    (_, i, a) => `v1.2.0-beta.${a.length - i}`
+  )
 
   return (
     <Sheet>
@@ -123,6 +129,20 @@ function SidebarSheet() {
             value={description}
             placeholder="Write a short description about the transaction "
           ></textarea>
+
+          <ScrollArea className="h-72 w-48 rounded-md border">
+            <div className="p-4">
+              <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
+              {tags.map((tag) => (
+                <React.Fragment>
+                  <div className="text-sm" key={tag}>
+                    {tag}
+                  </div>
+                  {/* <CommandSeparator cla */}
+                </React.Fragment>
+              ))}
+            </div>
+          </ScrollArea>
 
           <div className="mt-auto" />
           <button

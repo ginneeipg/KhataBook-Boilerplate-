@@ -7,40 +7,19 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Command,
+  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { CommandList } from "cmdk";
-
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
+import { ScrollArea } from "../ui/scroll-area";
 
 export function ComboboxDemo({
   list,
@@ -60,43 +39,55 @@ export function ComboboxDemo({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between"
+          className="w-[21rem] justify-between"
         >
           {value
             ? list.find(
-                (framework: string) => framework.toLocaleLowerCase() === value
+                (category: string) => category.toLocaleLowerCase() === value
               )
-            : "Select category..."}
-
+            : "Select framework..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full  p-0 ">
-        <Command className="w-[21rem]">
-          <CommandInput placeholder="Search category..." />
+      <PopoverContent className="w-[21rem] p-0">
+        {/* <Command>
+          <CommandInput placeholder="Search framework..." />
           <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandList>
-            {list.map((item) => (
-              <CommandItem
-                key={item}
-                onSelect={(currentValue) => {
-                  console.log(currentValue);
-
-                  setValue(currentValue === value ? "" : currentValue);
-                  setOpen(false);
-                }}
-              >
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    value === item ? "opacity-100" : "opacity-0"
-                  )}
-                />
-                {item}
-              </CommandItem>
-            ))}
-          </CommandList>
-        </Command>
+          <CommandGroup>
+            <ScrollArea className="h-72">
+              {list.map((category: string) => (
+                <CommandItem
+                  key={category}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? "" : currentValue);
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      value === category ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  {category}
+                </CommandItem>
+              ))}
+            </ScrollArea>
+          </CommandGroup>
+        </Command> */}
+         <ScrollArea className="h-72  rounded-md border">
+            <div className="p-4">
+              <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
+              {list.map((tag) => (
+                <React.Fragment>
+                  <div className="text-sm" key={tag}>
+                    {tag}
+                  </div>
+                  {/* <CommandSeparator cla */}
+                </React.Fragment>
+              ))}
+            </div>
+          </ScrollArea>
       </PopoverContent>
     </Popover>
   );
