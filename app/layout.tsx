@@ -1,4 +1,4 @@
-import SideBarMenu from "@/Components/SideBarMenu/SideBarMenu";
+import SideBarMenu from "@/components/SideBarMenu/SideBarMenu";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";

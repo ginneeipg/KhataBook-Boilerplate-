@@ -1,4 +1,65 @@
 {
-  
-    
+  "transaction": [
+    {
+      "type": "Expense",
+      "amount": 75,
+      "description": "office lunch",
+      "categories": "Food",
+      "date": 1690223093003,
+      "id": 1
+    },
+    {
+      "type": "Expense",
+      "amount": 8000,
+      "description": "PG Rent",
+      "categories": "rent",
+      "date": 1690227796704,
+      "id": 2
+    },
+    {
+      "type": "Income",
+      "amount": 10100,
+      "description": "Internship Stipend for 15 days @ Rehook.ai",
+      "categories": "salary",
+      "date": 1690227921656,
+      "id": 3
+    },
+    {
+      "type": "Expense",
+      "amount": 190,
+      "description": "Medicine",
+      "categories": "misc",
+      "date": 1690274518813,
+      "id": 4
+    },
+    {
+      "type": "Expense",
+      "amount": 54,
+      "description": "snack",
+      "categories": "misc",
+      "date": 1690304369004,
+      "id": 5
+    }
+  ],
+  "categories": [
+    "Transportation",
+    "Movies",
+    "Education",
+    "Grocery",
+    "Clothing",
+    "Health & Medicine",
+    "Misc",
+    "Salary",
+    "Recharge",
+    "LIC",
+    "Rent",
+    "Electricity",
+    "Dining Out",
+    "Insurance",
+    "Home Maintenance",
+    "Appliances",
+    "Subscriptions",
+    "Travel & Vacations",
+    "Car Maintenance"
+  ]
 }

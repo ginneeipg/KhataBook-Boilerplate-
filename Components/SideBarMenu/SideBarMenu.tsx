@@ -37,16 +37,17 @@ function SideBarMenu() {
       <div className=" text-2xl bg-neutral-800/60 text-green-500 flex flex-row items-center p-4 gap-1">
         <FaBook />
 
-        <span className="font-bold ">BahiKhata</span>
+        <span className="font-bold italic ">Zeeoro</span>
       </div>
 
       {/* Menu */}
       <div className="flex-col flex ">
         {sidebarMenuList.map((menuItem) => (
-          <Link href={menuItem?.link}>
+          <Link key={menuItem?.link} href={menuItem?.link}>
             <div
-              className={`flex flex-row items-center px-4 my-2 gap-2 ${
-                pathname === menuItem?.link && "text-green-400"
+              className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-900/40 p-2 ${
+                pathname === menuItem?.link &&
+                "text-green-400 bg-neutral-900/70 border-l-4 border-green-500"
               }`}
             >
               {menuItem?.icon}
@@ -83,6 +84,7 @@ function SideBarMenu() {
           {"Settings"}
         </div>
       </Link>
+      {/* Selected Book */}
       <div className="bg-neutral-900/70 p-3 m-3 rounded-md flex flex-row items-center justify-between">
         <div className="flex-col flex">
           <span className="text-xs">Selected book</span>
