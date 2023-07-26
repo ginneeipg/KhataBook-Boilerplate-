@@ -20,6 +20,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ScrollArea } from "../ui/scroll-area";
+import AddCategorySheet from "../SideSheet/AddCategorySheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+} from "../ui/dialog";
+import { DialogTrigger } from "@radix-ui/react-dialog";
 
 export function ComboboxDemo({
   list,
@@ -50,9 +58,31 @@ export function ComboboxDemo({
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[21rem] p-0">
-        {/* <Command>
+        <Command>
           <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandEmpty className="h-28 flex flex-col justify-center items-center ">
+            <div className=" flex flex-col items-center ">
+              <span className="text-xl font-bold text-slate-400 ">
+                No Category found.
+              </span>
+              <span className="text-xs">No worries, just add a new one</span>
+              <div className="my-2"></div>
+              <Dialog>
+                <DialogTrigger >
+                  <button>Add new category</button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>Add new Category</DialogHeader>
+                  
+                  <input type="text" placeholder="Category" />
+                  <DialogFooter>
+                    <button>Cancel</button>
+                    <button>Add</button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </CommandEmpty>
           <CommandGroup>
             <ScrollArea className="h-72">
               {list.map((category: string) => (
@@ -74,20 +104,7 @@ export function ComboboxDemo({
               ))}
             </ScrollArea>
           </CommandGroup>
-        </Command> */}
-         <ScrollArea className="h-72  rounded-md border">
-            <div className="p-4">
-              <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
-              {list.map((tag) => (
-                <React.Fragment>
-                  <div className="text-sm" key={tag}>
-                    {tag}
-                  </div>
-                  {/* <CommandSeparator cla */}
-                </React.Fragment>
-              ))}
-            </div>
-          </ScrollArea>
+        </Command>
       </PopoverContent>
     </Popover>
   );

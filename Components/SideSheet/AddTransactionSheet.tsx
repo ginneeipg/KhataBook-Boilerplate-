@@ -130,20 +130,7 @@ function SidebarSheet() {
             placeholder="Write a short description about the transaction "
           ></textarea>
 
-          <ScrollArea className="h-72 w-48 rounded-md border">
-            <div className="p-4">
-              <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
-              {tags.map((tag) => (
-                <React.Fragment>
-                  <div className="text-sm" key={tag}>
-                    {tag}
-                  </div>
-                  {/* <CommandSeparator cla */}
-                </React.Fragment>
-              ))}
-            </div>
-          </ScrollArea>
-
+       
           <div className="mt-auto" />
           <button
             className="bg-green-600 w-full text-white rounded-md p-2"

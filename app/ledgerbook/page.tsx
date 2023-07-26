@@ -9,7 +9,7 @@ import {
   AiOutlinePrinter,
   AiOutlineUnorderedList,
 } from "react-icons/ai";
-import SidebarSheet from "@/components/SideSheet/SidebarSheet";
+import SidebarSheet from "@/components/SideSheet/AddTransactionSheet";
 
 function LeaderBook() {
   const [tabBarIndex, setTabBarIndex] = useState<string>("all");
