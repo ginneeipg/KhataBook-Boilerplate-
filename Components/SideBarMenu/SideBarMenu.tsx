@@ -32,9 +32,9 @@ function SideBarMenu() {
   ];
 
   return (
-    <div className="flex-col flex min-h-screen bg-neutral-800 text-neutral-200 w-1/6">
+    <div className="flex-col flex min-h-screen border-r text-neutral-700 w-1/6">
       {/* Logo */}
-      <div className=" text-2xl bg-neutral-800/60 text-green-500 flex flex-row items-center p-4 gap-1">
+      <div className=" text-2xl  text-green-500 flex flex-row items-center p-4 gap-1">
         <FaBook />
 
         <span className="font-bold italic ">Zeeoro</span>
@@ -45,9 +45,9 @@ function SideBarMenu() {
         {sidebarMenuList.map((menuItem) => (
           <Link key={menuItem?.link} href={menuItem?.link}>
             <div
-              className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-900/40 p-2 ${
+              className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
                 pathname === menuItem?.link &&
-                "text-green-400 bg-neutral-900/70 border-l-4 border-green-500"
+                "text-green-500  border-l-4 border-green-500 bg-green-50"
               }`}
             >
               {menuItem?.icon}
@@ -85,7 +85,7 @@ function SideBarMenu() {
         </div>
       </Link>
       {/* Selected Book */}
-      <div className="bg-neutral-900/70 p-3 m-3 rounded-md flex flex-row items-center justify-between">
+      <div className=" p-3 m-3 rounded-xl flex flex-row items-center bg-slate-100 justify-between">
         <div className="flex-col flex">
           <span className="text-xs">Selected book</span>
           <span>Personal Book</span>

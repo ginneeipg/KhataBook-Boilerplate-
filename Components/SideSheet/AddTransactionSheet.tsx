@@ -1,21 +1,28 @@
 "use client";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 // import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import Dropdown from "../DropDown/DropDown";
 import { ComboboxDemo } from "../CombBox/ComboBox";
+import { ScrollArea } from "../ui/scroll-area";
+import { CommandSeparator } from "../ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Button } from "../ui/button";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "../ui/calendar";
 
-function SidebarSheet() {
+function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
   //   const router = useRouter();
   const [openCategory, setOpenCategory] = useState(false);
-  const [selectCategory, setselectCategory] = useState("");
-
+  // const [open, setOpen] = useState(false);
+  const [selectCategory, setselectCategory] = useState<any>(null);
+  const [categories, setCategories] = useState<any[]>([]);
   const [transactionType, setTransactionType] = useState("Income");
   const [showTransactionType, setShowTransactionType] = useState(false);
   const [amountInput, setAmountInput] = useState<number>();
   const [description, setDescription] = useState("");
-  const [categories, setCategories] = useState<string[]>([]);
+  const [date, setDate] = useState<Date>();
 
   const handleSubmit = (data: any) => {
     fetch("http://localhost:4000/transaction", {
@@ -52,21 +59,21 @@ function SidebarSheet() {
       }
     };
     getCategories();
-  }, []);
+  }, [selectCategory]);
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen} defaultOpen={false}>
       <SheetTrigger className="bg-green-600 w-full text-white rounded-md p-2">
         Add Transaction
       </SheetTrigger>
-      <SheetContent>
-        <div className="flex-col flex items-center min-h-screen gap-3 ">
+      <SheetContent className="bg-white">
+        <div className="flex-col flex items-center min-h-screen bg-white  gap-3 ">
           <div className=" max-w-sm overflow-hidden my-4  flex flex-col items-center">
             <span className="text-sm my-3">Enter Amount</span>
 
             <input
               type="number"
-              placeholder="$0"
+              placeholder="₹0"
               value={amountInput}
               onChange={(e) => setAmountInput(e.target.valueAsNumber)}
               autoFocus
@@ -83,12 +90,34 @@ function SidebarSheet() {
 
           {/* Date time */}
           <div className="flex w-full gap-2">
-            <button
-              className="border flex-1 rounded-md p-2"
-              // onClick={() => setOpenSelectList(!openSelectList)}
-            >
-              Date
-            </button>
+            {/* Shadcn-ui */}
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant={"outline"}
+                  className={`"w-[280px] justify-start text-left font-normal"
+            ${!date && "text-muted-foreground"}
+          `}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {date ? (
+                    <span>{date?.toDateString()}</span>
+                  ) : (
+                    <span>Pick a date</span>
+                  )}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0 bg-white">
+                <Calendar
+                  mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  initialFocus
+                  showOutsideDays={false}
+                />
+              </PopoverContent>
+            </Popover>
+            {/*  */}
             <div className="flex flex-col flex-1  items-stretch">
               <button
                 className="border rounded-md p-2 flex justify-between items-center gap-5"
@@ -132,14 +161,34 @@ function SidebarSheet() {
                 type: transactionType,
                 amount: amountInput,
                 description: description,
-                categories: selectCategory,
-                date: Date.now(),
+                categories: selectCategory?.name,
+                date: date?.getTime(),
               });
+              setOpen(!open);
+              setAmountInput(0);
+              setselectCategory("");
+              setTransactionType("");
+              setDescription("");
             }}
           >
             Save
           </button>
-          <button className="bg-slate-300 text-slate-900 w-full rounded-md p-2">
+          <button
+            onClick={() => {
+              handleSubmit({
+                type: transactionType,
+                amount: amountInput,
+                description: description,
+                categories: selectCategory?.name,
+                date: date?.getMilliseconds(),
+              });
+              setAmountInput(0);
+              setselectCategory("Expense");
+              setTransactionType("");
+              setDescription("");
+            }}
+            className="bg-slate-300 text-slate-900 w-full rounded-md p-2"
+          >
             Save & Add more
           </button>
           <div className="mt-10"></div>

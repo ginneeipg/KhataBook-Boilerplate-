@@ -2,64 +2,61 @@
   "transaction": [
     {
       "type": "Expense",
-      "amount": 75,
-      "description": "office lunch",
-      "categories": "Food",
-      "date": 1690223093003,
+      "amount": 370,
+      "description": "Chicken Biryani Combo",
+      "categories": "office lunch",
+      "date": 1691087400000,
       "id": 1
     },
     {
       "type": "Expense",
-      "amount": 8000,
-      "description": "PG Rent",
-      "categories": "rent",
-      "date": 1690227796704,
+      "amount": 760,
+      "description": "Oppenhimmer ",
+      "categories": "movie",
+      "date": 1690482600000,
       "id": 2
     },
     {
-      "type": "Income",
-      "amount": 10100,
-      "description": "Internship Stipend for 15 days @ Rehook.ai",
-      "categories": "salary",
-      "date": 1690227921656,
+      "type": "Expense",
+      "amount": 23,
+      "description": "afdcwedcw",
+      "categories": "transportation",
+      "date": 1691001000000,
       "id": 3
     },
     {
       "type": "Expense",
-      "amount": 190,
-      "description": "Medicine",
-      "categories": "misc",
-      "date": 1690274518813,
+      "amount": 2000,
+      "description": "Udemy Course",
+      "categories": "education",
+      "date": 1689100200000,
       "id": 4
-    },
-    {
-      "type": "Expense",
-      "amount": 54,
-      "description": "snack",
-      "categories": "misc",
-      "date": 1690304369004,
-      "id": 5
     }
   ],
   "categories": [
-    "Transportation",
-    "Movies",
-    "Education",
-    "Grocery",
-    "Clothing",
-    "Health & Medicine",
-    "Misc",
-    "Salary",
-    "Recharge",
-    "LIC",
-    "Rent",
-    "Electricity",
-    "Dining Out",
-    "Insurance",
-    "Home Maintenance",
-    "Appliances",
-    "Subscriptions",
-    "Travel & Vacations",
-    "Car Maintenance"
+    {
+      "name": "food",
+      "id": 1
+    },
+    {
+      "name": "room rent",
+      "id": 2
+    },
+    {
+      "name": "office lunch",
+      "id": 3
+    },
+    {
+      "name": "movie",
+      "id": 4
+    },
+    {
+      "name": "transportation",
+      "id": 5
+    },
+    {
+      "name": "education",
+      "id": 6
+    }
   ]
 }
