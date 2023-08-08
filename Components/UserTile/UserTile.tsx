@@ -2,10 +2,12 @@ function UserTile({
   user,
   selected_user,
   onClick,
+  totalAmount,
 }: {
   user: any;
   selected_user: any;
   onClick: any;
+  totalAmount: number;
 }) {
   return (
     <div className="flex-col flex  cursor-pointer" onClick={onClick}>
@@ -21,7 +23,11 @@ function UserTile({
           <span className="font-semibold text-sm">{user?.user_name}</span>
           <span className="text-xs">{user?.phone}</span>
         </div>
-        <span className="font-semibold">$3,780</span>
+        <div className="flex-col flex items-center gap-1">
+        <span className={`font-semibold ${totalAmount===0?"text-black":totalAmount>0?"text-green-500":"text-red-500"}`}>${Math.abs(totalAmount)}</span>
+          <span className="text-xs">{totalAmount===0?"Settled":totalAmount>0?"You'll get":"You'll give"}</span>
+        </div>
+        
       </div>
       <hr />
     </div>
