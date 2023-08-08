@@ -38,13 +38,13 @@ function LedgerBookNavBar({
         </div>
 
         <div
-          className={`rounded-full  py-1 px-3 cursor-pointer bg-slate-100 border flex flex-row items-center justify-between gap-2 `}
+          className={`rounded-full  py-1 px-3 cursor-pointer border border-slate-200  flex flex-row items-center justify-between gap-2 `}
         >
           <BsCalendarDate />
           <span className="text-sm">This month</span>
         </div>
 
-        <div className="rounded-full bg-slate-100 border  flex flex-row  text-sm">
+        <div className="rounded-full  border  border-slate-200 flex flex-row  text-sm">
           <div
             className={`rounded-full px-6 py-1 cursor-pointer ${
               tabBarIndex == "all" && "bg-green-500  text-white"
@@ -72,21 +72,21 @@ function LedgerBookNavBar({
         </div>
 
         <button
-          className="bg-slate-200 p-2 rounded-full"
+          className="border border-slate-200 p-2 rounded-full"
           onClick={() => setEnableFilters(!enableFilters)}
         >
           <VscListFilter />
         </button>
-        <button className="bg-slate-200 p-2 rounded-full">
+        <button className="border border-slate-200 p-2 rounded-full">
           <AiOutlineMore />
         </button>
       </div>
       {/* Filters */}
       {enableFilters && (
-        <div className="flex flex-row gap-3">
-          <span className="font-bold">Filters</span>
+        <div className="flex flex-row gap-3 items-center">
+          <span className="font-bold">Filters:</span>
           <div
-            className={`rounded-full  py-1 px-3 cursor-pointer bg-slate-50 flex flex-row items-center justify-between gap-2 `}
+            className={`rounded-full  py-1 px-3 cursor-pointer bg-slate-50 border border-slate-200 flex flex-row items-center justify-between gap-2 `}
           >
             <AiOutlineUnorderedList />
             <span className="text-sm">Category</span>

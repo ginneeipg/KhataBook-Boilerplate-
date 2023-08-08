@@ -31,6 +31,43 @@
       "categories": "education",
       "date": 1689100200000,
       "id": 4
+    },
+    {
+      "type": "Income",
+      "amount": 18063,
+      "description": "Internship Stipend",
+      "categories": "salary",
+      "date": 1690828200000,
+      "id": 6
+    },
+    {
+      "type": "Expense",
+      "amount": 300,
+      "description": "medicine",
+      "categories": "misc",
+      "date": 1691087400000,
+      "id": 7
+    },
+    {
+      "type": "Expense",
+      "amount": 233,
+      "description": "Office lunch",
+      "date": 1691087400000,
+      "id": 8
+    },
+    {
+      "type": "",
+      "amount": 32,
+      "description": "qsd",
+      "date": 1691087400000,
+      "id": 9
+    },
+    {
+      "type": "Expense",
+      "amount": 456,
+      "description": "office lunch",
+      "date": 1691346600000,
+      "id": 10
     }
   ],
   "categories": [
@@ -57,6 +94,112 @@
     {
       "name": "education",
       "id": 6
+    },
+    {
+      "name": "cccc",
+      "id": 7
+    },
+    {
+      "name": "salary",
+      "id": 8
+    },
+    {
+      "name": "misc",
+      "id": 9
+    }
+  ],
+  "credit_record": [
+    {
+      "amount": 355,
+      "participant": {
+        "user_name": "Karan Shaw",
+        "phone": "9856347845"
+      },
+      "user_id": "sdkjfbskjdfbksjd",
+      "date": 1691087400000,
+      "description": "For Movie",
+      "isSent": false
+    },
+    {
+      "amount": 150,
+      "participant": {
+        "user_name": "Karan Shaw",
+        "phone": "9856347845"
+      },
+      "user_id": "sdkjfbskjdfbksjd",
+      "date": 1691087400000,
+      "description": "For bike petrol",
+      "isSent": true
+    },
+    {
+      "amount": 150,
+      "participant": {
+        "user_name": "Himanshu Prasad",
+        "phone": "9856347845"
+      },
+      "user_id": "sdkjfbskjdfbksjd",
+      "date": 1691087400000,
+      "description": "For bike petrol",
+      "isSent": false
+    },
+    {
+      "amount": 650,
+      "participant": {
+        "user_name": "Karan Shaw",
+        "phone": "9856347845"
+      },
+      "user_id": "sdkjfbskjdfbksjd",
+      "date": 1691087400000,
+      "description": "For Movie",
+      "isSent": false
+    },
+    {
+      "amount": 1200,
+      "participant": {
+        "user_name": "Karan Shaw",
+        "phone": "9856347845"
+      },
+      "user_id": "sdkjfbskjdfbksjd",
+      "date": 1691087400000,
+      "description": "For Movie",
+      "isSent": false
+    }
+  ],
+  "people": [
+    {
+      "id": 1,
+      "user_name": "Subham Jaiswal",
+      "phone": 9734875689
+    },
+    {
+      "id": 2,
+      "user_name": "Karan Shaw",
+      "phone": 8954367893
+    },
+    {
+      "id": 3,
+      "user_name": "Himanshu Prasad",
+      "phone": 9876453278
+    },
+    {
+      "id": 4,
+      "user_name": "Vishal Prajapati",
+      "phone": 8709534567
+    },
+    {
+      "id": 5,
+      "user_name": "Rahul Shaw",
+      "phone": 9876453278
+    },
+    {
+      "id": 6,
+      "user_name": "Akash Prasad",
+      "phone": 9876453278
+    },
+    {
+      "id": 7,
+      "user_name": "Anil Chourasia",
+      "phone": 9876453278
     }
   ]
 }
