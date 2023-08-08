@@ -31,6 +31,30 @@ function CreditRecord() {
     setPeople(items);
   };
 
+  const getAcountedAmountByUser=(user:any)=>{
+    return creditRecords
+
+    .filter((item: any) => {
+      return (
+        item?.participant?.user_name === user?.user_name &&
+        item?.isSent
+      );
+    })
+    .reduce((accumulator: any, currentValue: any) => {
+      return accumulator + currentValue.amount;
+    }, 0)-creditRecords
+
+    .filter((item: any) => {
+      return (
+        item?.participant?.user_name === user?.user_name &&
+        !item?.isSent
+      );
+    })
+    .reduce((accumulator: any, currentValue: any) => {
+      return accumulator + currentValue.amount;
+    }, 0)
+  }
+
   return (
     <div className="flex flex-row">
       <div className="flex-col flex min-h-screen bg-white w-1/3 border-r ">
@@ -83,6 +107,7 @@ function CreditRecord() {
             .map((user: any) => (
               <UserTile
                 user={user}
+                totalAmount={getAcountedAmountByUser(user)}
                 selected_user={filterRecordByUserId}
                 onClick={() => {
                   setFilterRecordByUserId(user);
@@ -122,10 +147,10 @@ function CreditRecord() {
             </div>
           </div>
 
-          <div className="flex-col items-center flex mr-5">
-            <span className="text-sm  font-semibold">You'll give</span>
-            <span className="text- font-semibold text-red-500">$42442</span>
-          </div>
+          {!showAllTransactions&&<div className="flex-col flex items-center -gap-1 mx-5">
+          <span className="text-xs">{getAcountedAmountByUser(filterRecordByUserId)===0?"Settled":getAcountedAmountByUser(filterRecordByUserId)>0?"You'll get":"You'll give"}</span>
+        <span className={`font-semibold text-lg ${getAcountedAmountByUser(filterRecordByUserId)>=0?"text-green-500":"text-red-500"}`}>${Math.abs(getAcountedAmountByUser(filterRecordByUserId))}</span>
+        </div>}
 
           <button className="border border-slate-300 p-2 rounded-full">
             <VscListFilter />
