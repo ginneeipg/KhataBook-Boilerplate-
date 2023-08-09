@@ -14,9 +14,12 @@ function CreditRecord() {
   const [filterRecordByUserId, setFilterRecordByUserId] = useState<any>();
   const [showAllTransactions, SetshowAllTransactions] = useState<boolean>(true);
 
+  const [totalAmount, setTotalAmount] = useState<any[]>([]);
+
   useEffect(() => {
     getData();
     getPeople();
+    getAccumulativeTotal();
   }, []);
 
   const getData = async () => {
@@ -31,29 +34,41 @@ function CreditRecord() {
     setPeople(items);
   };
 
-  const getAcountedAmountByUser=(user:any)=>{
-    return creditRecords
+  const getAcountedAmountByUser = (user: any) => {
+    return (
+      creditRecords
 
-    .filter((item: any) => {
-      return (
-        item?.participant?.user_name === user?.user_name &&
-        item?.isSent
-      );
-    })
-    .reduce((accumulator: any, currentValue: any) => {
-      return accumulator + currentValue.amount;
-    }, 0)-creditRecords
+        .filter((item: any) => {
+          return (
+            item?.participant?.user_name === user?.user_name && item?.isSent
+          );
+        })
+        .reduce((accumulator: any, currentValue: any) => {
+          return accumulator + currentValue.amount;
+        }, 0) -
+      creditRecords
 
-    .filter((item: any) => {
-      return (
-        item?.participant?.user_name === user?.user_name &&
-        !item?.isSent
-      );
-    })
-    .reduce((accumulator: any, currentValue: any) => {
-      return accumulator + currentValue.amount;
-    }, 0)
-  }
+        .filter((item: any) => {
+          return (
+            item?.participant?.user_name === user?.user_name && !item?.isSent
+          );
+        })
+        .reduce((accumulator: any, currentValue: any) => {
+          return accumulator + currentValue.amount;
+        }, 0)
+    );
+  };
+
+  const getAccumulativeTotal = () => {
+    setTotalAmount([
+      ...people.map((user: any) => {
+        return {
+          id: user?.id,
+          amount: getAcountedAmountByUser(user),
+        };
+      }),
+    ]);
+  };
 
   return (
     <div className="flex flex-row">
@@ -75,15 +90,46 @@ function CreditRecord() {
             <div className="flex flex-row justify-around  p-3 w-full">
               <div className="flex-col flex items-center justify-center">
                 <span className="text-sm font-semibold">You will give</span>
-                <span className="font-bold text-red-500">$30557</span>
+                <span className="font-bold text-red-500">
+                  {totalAmount
+                    .filter((item: any) => item.amount < 0)
+                    .reduce(
+                      (accumulator: any, currentVaule: any) =>
+                        accumulator + currentVaule.amount,
+                      0
+                    )}
+                </span>
               </div>
               <div className="flex-col flex items-center justify-center">
                 <span className="text-sm font-semibold">You will receive</span>
-                <span className="font-bold text-green-500">$34557</span>
+                <span className="font-bold text-green-500">
+                  {totalAmount
+                    .filter((item: any) => item.amount > 0)
+                    .reduce(
+                      (accumulator: any, currentVaule: any) =>
+                        accumulator + currentVaule.amount,
+                      0
+                    )}
+                </span>
               </div>
               <div className="flex-col flex items-center justify-center">
                 <span className="text-sm font-semibold">Net balance</span>
-                <span className="font-bold text-green-500">$4557</span>
+                <span className="font-bold text-green-500">
+                  {totalAmount
+                    .filter((item: any) => item.amount < 0)
+                    .reduce(
+                      (accumulator: any, currentVaule: any) =>
+                        accumulator + currentVaule.amount,
+                      0
+                    ) +
+                    totalAmount
+                      .filter((item: any) => item.amount > 0)
+                      .reduce(
+                        (accumulator: any, currentVaule: any) =>
+                          accumulator + currentVaule.amount,
+                        0
+                      )}
+                </span>
               </div>
             </div>
             <button
@@ -147,10 +193,26 @@ function CreditRecord() {
             </div>
           </div>
 
-          {!showAllTransactions&&<div className="flex-col flex items-center -gap-1 mx-5">
-          <span className="text-xs">{getAcountedAmountByUser(filterRecordByUserId)===0?"Settled":getAcountedAmountByUser(filterRecordByUserId)>0?"You'll get":"You'll give"}</span>
-        <span className={`font-semibold text-lg ${getAcountedAmountByUser(filterRecordByUserId)>=0?"text-green-500":"text-red-500"}`}>${Math.abs(getAcountedAmountByUser(filterRecordByUserId))}</span>
-        </div>}
+          {!showAllTransactions && (
+            <div className="flex-col flex items-center -gap-1 mx-5">
+              <span className="text-xs">
+                {getAcountedAmountByUser(filterRecordByUserId) === 0
+                  ? "Settled"
+                  : getAcountedAmountByUser(filterRecordByUserId) > 0
+                  ? "You'll get"
+                  : "You'll give"}
+              </span>
+              <span
+                className={`font-semibold text-lg ${
+                  getAcountedAmountByUser(filterRecordByUserId) >= 0
+                    ? "text-green-500"
+                    : "text-red-500"
+                }`}
+              >
+                ${Math.abs(getAcountedAmountByUser(filterRecordByUserId))}
+              </span>
+            </div>
+          )}
 
           <button className="border border-slate-300 p-2 rounded-full">
             <VscListFilter />

@@ -24,10 +24,25 @@ function UserTile({
           <span className="text-xs">{user?.phone}</span>
         </div>
         <div className="flex-col flex items-center gap-1">
-        <span className={`font-semibold ${totalAmount===0?"text-black":totalAmount>0?"text-green-500":"text-red-500"}`}>${Math.abs(totalAmount)}</span>
-          <span className="text-xs">{totalAmount===0?"Settled":totalAmount>0?"You'll get":"You'll give"}</span>
+          <span
+            className={`font-semibold ${
+              totalAmount === 0
+                ? "text-black"
+                : totalAmount > 0
+                ? "text-green-500"
+                : "text-red-500"
+            }`}
+          >
+            ${Math.abs(totalAmount)}
+          </span>
+          <span className="text-xs">
+            {totalAmount === 0
+              ? "Settled"
+              : totalAmount > 0
+              ? "You'll get"
+              : "You'll give"}
+          </span>
         </div>
-        
       </div>
       <hr />
     </div>
