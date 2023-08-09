@@ -68,6 +68,12 @@
       "description": "office lunch",
       "date": 1691346600000,
       "id": 10
+    },
+    {
+      "type": "Income",
+      "amount": 305,
+      "description": "qwertyui",
+      "id": 11
     }
   ],
   "categories": [
@@ -106,10 +112,15 @@
     {
       "name": "misc",
       "id": 9
+    },
+    {
+      "name": "sanck",
+      "id": 10
     }
   ],
   "credit_record": [
     {
+      "id": 1,
       "amount": 355,
       "participant": {
         "user_name": "Karan Shaw",
@@ -121,6 +132,7 @@
       "isSent": false
     },
     {
+      "id": 2,
       "amount": 150,
       "participant": {
         "user_name": "Karan Shaw",
@@ -132,6 +144,7 @@
       "isSent": true
     },
     {
+      "id": 3,
       "amount": 150,
       "participant": {
         "user_name": "Himanshu Prasad",
@@ -143,6 +156,7 @@
       "isSent": false
     },
     {
+      "id": 4,
       "amount": 650,
       "participant": {
         "user_name": "Karan Shaw",
@@ -154,10 +168,23 @@
       "isSent": false
     },
     {
+      "id": 5,
       "amount": 1200,
       "participant": {
         "user_name": "Karan Shaw",
         "phone": "9856347845"
+      },
+      "user_id": "sdkjfbskjdfbksjd",
+      "date": 1691087400000,
+      "description": "For Movie",
+      "isSent": true
+    },
+    {
+      "id": 6,
+      "amount": 1200,
+      "participant": {
+        "user_name": "Subham Jaiswal",
+        "phone": "9734875689"
       },
       "user_id": "sdkjfbskjdfbksjd",
       "date": 1691087400000,

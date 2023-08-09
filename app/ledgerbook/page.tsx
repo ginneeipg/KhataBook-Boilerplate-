@@ -184,7 +184,7 @@ function LeaderBook() {
               </div>
               <div className="flex flex-col px-3 gap-3">
                 {[...categories].map((categoryItem: any) => (
-                  <div className="flex flex-row justify-between">
+                  <div key={categoryItem?.id} className="flex flex-row justify-between">
                     <span className="text-sm text-slate-500">
                       {categoryItem}
                     </span>

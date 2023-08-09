@@ -130,6 +130,7 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
                 <div className="absolute top-[16.8rem] bg-slate-50 flex-col flex overflow-hidden rounded-md border w-[10rem] gap-2 p-2">
                   {["Income", "Expense"].map((item: string) => (
                     <option
+                    key={item}
                       className="w-full text-left"
                       onClick={() => {
                         setTransactionType(item);
