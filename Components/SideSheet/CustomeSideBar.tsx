@@ -107,6 +107,7 @@ function CustomeSideBar({
                     <div className="absolute top-[16.8rem] bg-slate-50 flex-col flex overflow-hidden rounded-md border  gap-2 p-2">
                       {["Income", "Expense"].map((item: string) => (
                         <option
+                          key={item}
                           className=" text-left"
                           onClick={() => {
                             setTransactionType(item);

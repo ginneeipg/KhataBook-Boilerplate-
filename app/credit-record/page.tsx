@@ -19,8 +19,11 @@ function CreditRecord() {
   useEffect(() => {
     getData();
     getPeople();
-    getAccumulativeTotal();
   }, []);
+
+  useEffect(() => {
+    getAccumulativeTotal();
+  }, [people]);
 
   const getData = async () => {
     const res = await fetch("http://localhost:4000/credit_record");
@@ -152,6 +155,7 @@ function CreditRecord() {
             )
             .map((user: any) => (
               <UserTile
+                key={user?.id}
                 user={user}
                 totalAmount={getAcountedAmountByUser(user)}
                 selected_user={filterRecordByUserId}
@@ -234,7 +238,7 @@ function CreditRecord() {
               );
             })
             .map((item: any) => (
-              <TransactionBubble item={item} />
+              <TransactionBubble key={item?.id} item={item} />
             ))}
         </div>
         <div className="flex px-5 flex-row-reverse">
