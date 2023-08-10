@@ -85,6 +85,7 @@ function CreditRecord() {
             <input
               type="text"
               placeholder="Search entry..."
+              value={searchString}
               onChange={(e) => setSearchString(e.target.value)}
               className="bg-transparent outline-none text-sm flex-1"
             />

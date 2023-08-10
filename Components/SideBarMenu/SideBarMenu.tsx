@@ -61,8 +61,9 @@ function SideBarMenu() {
 
       <Link href={"/help"}>
         <div
-          className={`flex flex-row items-center px-4 my-2 gap-2 ${
-            pathname === "help" && "text-green-400"
+          className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
+            pathname === "/help" &&
+            "text-green-500  border-l-4 border-green-500 bg-green-50"
           }`}
         >
           <span>
@@ -74,8 +75,9 @@ function SideBarMenu() {
 
       <Link href={"/settings"}>
         <div
-          className={`flex flex-row items-center px-4 my-2 gap-2 ${
-            pathname === "settings" && "text-green-400"
+           className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
+            pathname === "/settings" &&
+            "text-green-500  border-l-4 border-green-500 bg-green-50"
           }`}
         >
           <span>
