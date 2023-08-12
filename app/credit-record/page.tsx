@@ -75,6 +75,7 @@ function CreditRecord() {
 
   return (
     <div className="flex flex-row">
+      {/* left side bar */}
       <div className="flex-col flex min-h-screen bg-white w-1/3 border-r ">
         <div className="flex-col flex gap-3 p-3">
           <div className="flex flex-row justify-between">
@@ -168,6 +169,7 @@ function CreditRecord() {
             ))}
         </div>
       </div>
+      {/* main content */}
       <div className="flex-col  flex flex-1">
         <div className="p-3 bg-white shadow-sm w-full gap-3 flex-row flex items-center justify-between">
           <div className="flex-col flex mr-auto">

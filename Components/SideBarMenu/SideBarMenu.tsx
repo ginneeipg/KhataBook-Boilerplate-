@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BiChevronDown, BiCog, BiHelpCircle } from "react-icons/bi";
 import { FaBook } from "react-icons/fa";
+import { FiBook } from "react-icons/fi";
 import { GiNotebook } from "react-icons/gi";
 import { MdOutlineAttachMoney } from "react-icons/md";
 
@@ -15,7 +16,7 @@ function SideBarMenu() {
       title: "Ledge Book",
       icon: (
         <>
-          <GiNotebook size={20} />
+          <FiBook size={20} />
         </>
       ),
       link: "/ledgerbook",
@@ -31,6 +32,8 @@ function SideBarMenu() {
     },
   ];
 
+  console.log(pathname);
+
   return (
     <div className="flex-col flex min-h-screen border-r text-neutral-700 w-1/6">
       {/* Logo */}
@@ -45,9 +48,10 @@ function SideBarMenu() {
         {sidebarMenuList.map((menuItem) => (
           <Link key={menuItem?.link} href={menuItem?.link}>
             <div
-              className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
-                pathname === menuItem?.link &&
-                "text-green-500  border-l-4 border-green-500 bg-green-50"
+              className={`flex flex-row border-l-4 items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
+                pathname === menuItem?.link
+                  ? "text-green-500   border-green-500 bg-green-50"
+                  : " border-white"
               }`}
             >
               {menuItem?.icon}
@@ -75,8 +79,8 @@ function SideBarMenu() {
 
       <Link href={"/settings"}>
         <div
-           className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
-            pathname === "/settings" &&
+          className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
+            pathname.includes("settings") &&
             "text-green-500  border-l-4 border-green-500 bg-green-50"
           }`}
         >
