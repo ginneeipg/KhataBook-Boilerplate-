@@ -11,6 +11,13 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
   //   const router = useRouter();
@@ -119,29 +126,22 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
             </Popover>
             {/*  */}
             <div className="flex flex-col flex-1  items-stretch">
-              <button
-                className="border rounded-md p-2 flex justify-between items-center gap-5"
-                onClick={() => setShowTransactionType(!showTransactionType)}
-              >
-                <span>{transactionType}</span>
-                <FiChevronDown size={20} />
-              </button>
-              {showTransactionType && (
-                <div className="absolute top-[16.8rem] bg-slate-50 flex-col flex overflow-hidden rounded-md border w-[10rem] gap-2 p-2">
+              <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Theme" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
                   {["Income", "Expense"].map((item: string) => (
-                    <option
-                    key={item}
-                      className="w-full text-left"
-                      onClick={() => {
-                        setTransactionType(item);
-                        setShowTransactionType(!showTransactionType);
-                      }}
+                    <SelectItem
+                      key={item}
+                      value={item}
+                      onClick={() => setTransactionType(item)}
                     >
                       {item}
-                    </option>
+                    </SelectItem>
                   ))}
-                </div>
-              )}
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
@@ -176,7 +176,7 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
           </button>
           <button
             onClick={() => {
-              handleSubmit({
+              console.log({
                 type: transactionType,
                 amount: amountInput,
                 description: description,
