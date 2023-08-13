@@ -52,9 +52,9 @@ function LeaderBook() {
           setTabBarIndex={setTabBarIndex}
         />
         {/* main */}
-        <div className="flex flex-row items-start  m-2 gap-2 mx-5">
+        <div className="flex flex-row items-start   ">
           {/* list of transaction */}
-          <div className="flex-1 shadow-md rounded-xl overflow-hidden flex flex-col">
+          <div className="flex-1 shadow-md rounded-xl overflow-hidden m-3 flex flex-col">
             <div className="flex-row flex items-center  bg-white p-3">
               <span className=" flex-1 text-sm font-semibold">
                 Transaction Details
@@ -122,69 +122,81 @@ function LeaderBook() {
           </div>
           {/* information of transaction */}
           <div className="flex flex-col w-1/3 items-center sticky top-14 gap-3">
-            <div className="flex-col flex w-full bg-white border rounded-xl p-2 shadow-sm gap-3">
-              <span>Overview</span>
-              <hr />
-              <div className="flex-row flex gap-3 px-3">
-                <div className="flex-col flex">
-                  <span className="text-xs">Total Income</span>
-                  <span className="font-semibold">
-                    ₹
-                    {new Intl.NumberFormat("en-IN", {
-                      maximumSignificantDigits: 3,
-                    }).format(
-                      transactions
-                        .filter((item: any) => item?.type === "Income")
-                        .reduce((accumulator: any, currentValue: any) => {
-                          return accumulator + currentValue.amount;
-                        }, 0)
-                    )}
-                  </span>
-                </div>
-                <div className="flex-col flex">
-                  <span className="text-xs">Total Expense</span>
-                  <span className="font-semibold ">
-                    ₹
-                    {new Intl.NumberFormat("en-IN", {
-                      maximumSignificantDigits: 3,
-                    }).format(
-                      transactions
-                        .filter((item: any) => item?.type === "Expense")
-                        .reduce((accumulator: any, currentValue: any) => {
-                          return accumulator + currentValue.amount;
-                        }, 0)
-                    )}
-                  </span>
-                </div>
-                <div className="mr-auto"></div>
-                <div className="flex-col flex">
-                  <span className="text-xs">Balance</span>
-                  <span className="font-semibold ">
-                    ₹
-                    {new Intl.NumberFormat("en-IN", {
-                      maximumSignificantDigits: 3,
-                    }).format(
-                      transactions
-                        .filter((item: any) => item?.type === "Income")
-                        .reduce((accumulator: any, currentValue: any) => {
-                          return accumulator + currentValue.amount;
-                        }, 0) -
+            <div className="flex-col flex w-full bg-white border  p-3  gap-3">
+              <span className="font-semibold">Overview</span>
+              <div className="flex flex-col overflow-hidden justify-center items-center gap-2 border border-slate-200 rounded-xl">
+                <div className="flex flex-row justify-around  p-3 w-full">
+                  <div className="flex-col flex items-center justify-center">
+                    <span className="text-sm font-semibold">You will give</span>
+                    <span className="font-bold text-red-500">
+                      ₹
+                      {new Intl.NumberFormat("en-IN", {
+                        maximumSignificantDigits: 3,
+                      }).format(
+                        transactions
+                          .filter((item: any) => item?.type === "Income")
+                          .reduce((accumulator: any, currentValue: any) => {
+                            return accumulator + currentValue.amount;
+                          }, 0)
+                      )}
+                    </span>
+                  </div>
+                  <div className="flex-col flex items-center justify-center">
+                    <span className="text-sm font-semibold">
+                      You will receive
+                    </span>
+                    <span className="font-bold text-green-500">
+                      ₹
+                      {new Intl.NumberFormat("en-IN", {
+                        maximumSignificantDigits: 3,
+                      }).format(
                         transactions
                           .filter((item: any) => item?.type === "Expense")
                           .reduce((accumulator: any, currentValue: any) => {
                             return accumulator + currentValue.amount;
                           }, 0)
-                    )}
-                  </span>
+                      )}
+                    </span>
+                  </div>
+                  <div className="flex-col flex items-center justify-center">
+                    <span className="text-sm font-semibold">Net balance</span>
+                    <span className="font-bold text-green-500">
+                      ₹
+                      {new Intl.NumberFormat("en-IN", {
+                        maximumSignificantDigits: 3,
+                      }).format(
+                        transactions
+                          .filter((item: any) => item?.type === "Income")
+                          .reduce((accumulator: any, currentValue: any) => {
+                            return accumulator + currentValue.amount;
+                          }, 0) -
+                          transactions
+                            .filter((item: any) => item?.type === "Expense")
+                            .reduce((accumulator: any, currentValue: any) => {
+                              return accumulator + currentValue.amount;
+                            }, 0)
+                      )}
+                    </span>
+                  </div>
                 </div>
+                <button
+                  // onClick={() => SetshowAllTransactions(true)}
+                  className="w-full p-2 bg-slate-100 hover:bg-slate-200"
+                >
+                  <span className="text-sm">View Insights</span>
+                </button>
               </div>
+
               <div className="flex-row flex items-center gap-2">
                 <span className="text-sm font-semibold">Category vise</span>
                 <hr className=" flex-1" />
               </div>
-              <div className="flex flex-col px-3 gap-3">
+              <div className="flex flex-col  ">
                 {[...categories].map((categoryItem: any) => (
-                  <div key={categoryItem?.id} className="flex flex-row justify-between">
+                  <div
+                    key={categoryItem?.id}
+                    className="flex flex-row justify-between hover:bg-slate-50 rounded-lg cursor-pointer p-2"
+                  >
                     <span className="text-sm text-slate-500">
                       {categoryItem}
                     </span>

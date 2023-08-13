@@ -24,7 +24,7 @@ function LedgerBookNavBar({
   setEnableFilters: any;
 }) {
   return (
-    <div className="flex-col flex shadow bg-white sticky top-0 z-50  py-2 px-5 gap-2">
+    <div className="flex-col flex  bg-white sticky top-0 z-50  py-2 px-5 gap-2">
       <div className="flex flex-row items-center  justify-between  gap-2">
         <div className="flex-row flex  items-center justify-start gap-2 bg-white border mr-auto dark:bg-zinc-800 px-2 py-1 rounded-md w-full sm:w-1/2 md:w-1/4     focus-within:flex-grow  focus-within:border-none focus-within:ring-1 focus-within:ring-green-600 ">
           <BiSearchAlt size={25} className="text-neutral-300" />

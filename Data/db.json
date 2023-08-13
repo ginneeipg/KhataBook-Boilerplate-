@@ -49,31 +49,24 @@
       "id": 7
     },
     {
-      "type": "Expense",
-      "amount": 233,
-      "description": "Office lunch",
-      "date": 1691087400000,
+      "type": "Income",
+      "amount": 56,
+      "description": "jhjg",
       "id": 8
     },
     {
-      "type": "",
-      "amount": 32,
-      "description": "qsd",
-      "date": 1691087400000,
+      "type": "Expense",
+      "amount": 234,
+      "description": "qwerty",
+      "date": 0,
       "id": 9
     },
     {
       "type": "Expense",
-      "amount": 456,
-      "description": "office lunch",
-      "date": 1691346600000,
+      "amount": 230,
+      "description": "2er",
+      "date": 0,
       "id": 10
-    },
-    {
-      "type": "Income",
-      "amount": 305,
-      "description": "qwertyui",
-      "id": 11
     }
   ],
   "categories": [
