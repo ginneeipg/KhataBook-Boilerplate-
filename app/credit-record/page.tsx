@@ -74,9 +74,9 @@ function CreditRecord() {
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row min-h-screen max-h-screen ">
       {/* left side bar */}
-      <div className="flex-col flex min-h-screen bg-white w-1/3 border-r ">
+      <div className="flex-col flex  bg-white w-1/3 border-r ">
         <div className="flex-col flex gap-3 p-3">
           <div className="flex flex-row justify-between">
             <span className="font-bold text-xl">Credits</span>
@@ -148,26 +148,27 @@ function CreditRecord() {
         {/* Customers */}
         <span className="text-sm px-3 pb-3">People</span>
         <hr />
-        <div className="flex-col flex h-[34rem] overflow-y-auto">
-          {people
-            ?.filter(({ user_name }: { user_name: string }) =>
-              user_name
-                ?.toLocaleLowerCase()
-                ?.includes(searchString.toLocaleLowerCase())
-            )
-            .map((user: any) => (
-              <UserTile
-                key={user?.id}
-                user={user}
-                totalAmount={getAcountedAmountByUser(user)}
-                selected_user={filterRecordByUserId}
-                onClick={() => {
-                  setFilterRecordByUserId(user);
-                  SetshowAllTransactions(false);
-                }}
-              />
-            ))}
-        </div>
+        
+          <div className="flex-col flex  overflow-y-auto">
+            {people
+              ?.filter(({ user_name }: { user_name: string }) =>
+                user_name
+                  ?.toLocaleLowerCase()
+                  ?.includes(searchString.toLocaleLowerCase())
+              )
+              .map((user: any) => (
+                <UserTile
+                  key={user?.id}
+                  user={user}
+                  totalAmount={getAcountedAmountByUser(user)}
+                  selected_user={filterRecordByUserId}
+                  onClick={() => {
+                    setFilterRecordByUserId(user);
+                    SetshowAllTransactions(false);
+                  }}
+                />
+              ))}
+          </div>
       </div>
       {/* main content */}
       <div className="flex-col  flex flex-1">
@@ -228,7 +229,7 @@ function CreditRecord() {
             <AiOutlineMore />
           </button>
         </div>
-        <div className="flex flex-col p-5 h-[43rem] gap-5 overflow-y-auto">
+        <div className="flex flex-col p-5  gap-5 overflow-y-auto">
           {creditRecords
 
             .filter((item: any) => {
