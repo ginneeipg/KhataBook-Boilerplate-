@@ -8,7 +8,7 @@ function HelpScreen() {
   const [serachQuestionString, setSerachQuestionString] = useState<string>();
   const [upbit, setUpbit] = useState<boolean>();
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen max-h-screen ">
       {/* header */}
       <div className="flex-col flex bg-white p-5 gap-3 shadow-md ">
         <div className="flex flex-row items-center justify-between">

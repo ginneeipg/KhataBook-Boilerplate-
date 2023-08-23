@@ -49,23 +49,27 @@
       "id": 7
     },
     {
-      "type": "Income",
-      "amount": 56,
-      "description": "jhjg",
+      "type": "",
+      "amount": 32,
+      "description": "SBg",
+      "categories": "room rent",
+      "date": 1691778600000,
       "id": 8
     },
     {
-      "type": "Expense",
-      "amount": 234,
-      "description": "qwerty",
-      "date": 0,
+      "type": "expense",
+      "amount": 3244,
+      "description": "Lorem ipsum is the stansard",
+      "categories": "misc",
+      "date": 1692729000000,
       "id": 9
     },
     {
-      "type": "Expense",
-      "amount": 230,
-      "description": "2er",
-      "date": 0,
+      "type": "",
+      "amount": 120,
+      "description": "adwa",
+      "categories": "movie",
+      "date": 1691778600000,
       "id": 10
     }
   ],

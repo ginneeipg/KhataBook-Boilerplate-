@@ -21,24 +21,24 @@ function Layout({ children }: { children: React.ReactNode }) {
       icon: <AiOutlineUser size={20} />,
       link: "/settings",
     },
-    {
-      id: "manage-notifications",
-      name: "Manage notification",
-      icon: <AiOutlineBell size={20} />,
-      link: "/settings/notifications",
-    },
+    // {
+    //   id: "manage-notifications",
+    //   name: "Manage notification",
+    //   icon: <AiOutlineBell size={20} />,
+    //   link: "/settings/notifications",
+    // },
     {
       id: "security-setting",
       name: "Security",
       icon: <AiOutlineSecurityScan size={20} />,
       link: "/settings/security",
     },
-    {
-      id: "book-settings",
-      name: "Book Settings",
-      icon: <FiBook size={20} />,
-      link: "/settings/book-settings",
-    },
+    // {
+    //   id: "book-settings",
+    //   name: "Book Settings",
+    //   icon: <FiBook size={20} />,
+    //   link: "/settings/book-settings",
+    // },
   ];
   return (
     <div className="flex flex-row">
@@ -61,7 +61,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           ))}
         </div>
         <div className="my-auto"></div>
-        <button className="flex flex-row items-center bg-red-50 border border-red-200 p-2 rounded-lg w-full justify-center gap-2">
+        <button className="flex flex-row items-center hover:bg-red-50 border hover:border-red-200 hover:text-red-600 p-2 rounded-lg w-full justify-center gap-2">
           <AiOutlineLogout />
           <span>Log out</span>
         </button>

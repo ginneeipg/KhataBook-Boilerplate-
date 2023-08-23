@@ -13,7 +13,7 @@ function SideBarMenu() {
 
   const sidebarMenuList: SideBarMenuType[] = [
     {
-      title: "Ledge Book",
+      title: "Ledger Book",
       icon: (
         <>
           <FiBook size={20} />
@@ -32,10 +32,8 @@ function SideBarMenu() {
     },
   ];
 
-  console.log(pathname);
-
   return (
-    <div className="flex-col flex min-h-screen border-r text-neutral-700 w-1/6">
+    <div className="flex-col flex min-h-screen border-r text-neutral-700 min-w-[16rem]">
       {/* Logo */}
       <div className=" text-2xl  text-green-500 flex flex-row items-center p-4 gap-1">
         <FaBook />
@@ -65,9 +63,10 @@ function SideBarMenu() {
 
       <Link href={"/help"}>
         <div
-          className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
-            pathname === "/help" &&
-            "text-green-500  border-l-4 border-green-500 bg-green-50"
+          className={`flex flex-row items-center px-4 border-l-4  gap-2 hover:bg-neutral-100/40 p-2 ${
+            pathname === "/help"
+              ? "text-green-500   border-green-500 bg-green-50"
+              : " border-white"
           }`}
         >
           <span>
@@ -79,9 +78,10 @@ function SideBarMenu() {
 
       <Link href={"/settings"}>
         <div
-          className={`flex flex-row items-center px-4  gap-2 hover:bg-neutral-100/40 p-2 ${
-            pathname.includes("settings") &&
-            "text-green-500  border-l-4 border-green-500 bg-green-50"
+          className={`flex flex-row items-center px-4 border-l-4 gap-2 hover:bg-neutral-100/40 p-2 ${
+            pathname.includes("settings")
+              ? "text-green-500   border-green-500 bg-green-50"
+              : " border-white"
           }`}
         >
           <span>

@@ -1,3 +1,5 @@
+import { amountWithComma } from "@/helperFunction/formater";
+
 function UserTile({
   user,
   selected_user,
@@ -23,25 +25,30 @@ function UserTile({
           <span className="font-semibold text-sm">{user?.user_name}</span>
           <span className="text-xs">{user?.phone}</span>
         </div>
-        <div className="flex-col flex items-center gap-1">
-          <span
-            className={`font-semibold ${
+
+        <div className="flex-col flex items-center gap-1  ">
+          <span className="font-medium ">
+            ₹{amountWithComma(Math.abs(totalAmount))}
+          </span>
+          <div
+            className={` text-[0.635rem] rounded-md border
+            ${
               totalAmount === 0
                 ? "text-black"
                 : totalAmount > 0
-                ? "text-green-500"
-                : "text-red-500"
-            }`}
+                ? "bg-green-50 text-green-600  border-green-20"
+                : "bg-red-50 text-red-600  border-red-20"
+            }
+            }0 px-2 py-[0.05rem] flex flex-row items-center gap-1`}
           >
-            ${Math.abs(totalAmount)}
-          </span>
-          <span className="text-xs">
-            {totalAmount === 0
-              ? "Settled"
-              : totalAmount > 0
-              ? "You'll get"
-              : "You'll give"}
-          </span>
+            <span>
+              {totalAmount === 0
+                ? "Settled"
+                : totalAmount > 0
+                ? "You'll get"
+                : "You'll give"}
+            </span>
+          </div>
         </div>
       </div>
       <hr />
