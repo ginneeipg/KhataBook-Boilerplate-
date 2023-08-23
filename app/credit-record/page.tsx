@@ -2,6 +2,7 @@
 import TransactionBubble from "@/components/TransactionBubble/TransactionBubble";
 import UserTile from "@/components/UserTile/UserTile";
 import { Button } from "@/components/ui/button";
+import { amountWithComma } from "@/helperFunction/formater";
 import { useEffect, useState } from "react";
 import { AiOutlineMore } from "react-icons/ai";
 import { BiSearchAlt } from "react-icons/bi";
@@ -96,44 +97,50 @@ function CreditRecord() {
               <div className="flex-col flex items-center justify-center">
                 <span className="text-sm font-semibold">You will give</span>
                 <span className="font-bold text-red-500">
-                  {totalAmount
-                    .filter((item: any) => item.amount < 0)
-                    .reduce(
-                      (accumulator: any, currentVaule: any) =>
-                        accumulator + currentVaule.amount,
-                      0
-                    )}
+                  {amountWithComma(
+                    totalAmount
+                      .filter((item: any) => item.amount < 0)
+                      .reduce(
+                        (accumulator: any, currentVaule: any) =>
+                          accumulator + currentVaule.amount,
+                        0
+                      )
+                  )}
                 </span>
               </div>
               <div className="flex-col flex items-center justify-center">
                 <span className="text-sm font-semibold">You will receive</span>
                 <span className="font-bold text-green-500">
-                  {totalAmount
-                    .filter((item: any) => item.amount > 0)
-                    .reduce(
-                      (accumulator: any, currentVaule: any) =>
-                        accumulator + currentVaule.amount,
-                      0
-                    )}
-                </span>
-              </div>
-              <div className="flex-col flex items-center justify-center">
-                <span className="text-sm font-semibold">Net balance</span>
-                <span className="font-bold text-green-500">
-                  {totalAmount
-                    .filter((item: any) => item.amount < 0)
-                    .reduce(
-                      (accumulator: any, currentVaule: any) =>
-                        accumulator + currentVaule.amount,
-                      0
-                    ) +
+                  {amountWithComma(
                     totalAmount
                       .filter((item: any) => item.amount > 0)
                       .reduce(
                         (accumulator: any, currentVaule: any) =>
                           accumulator + currentVaule.amount,
                         0
-                      )}
+                      )
+                  )}
+                </span>
+              </div>
+              <div className="flex-col flex items-center justify-center">
+                <span className="text-sm font-semibold">Net balance</span>
+                <span className="font-bold text-green-500">
+                  {amountWithComma(
+                    totalAmount
+                      .filter((item: any) => item.amount < 0)
+                      .reduce(
+                        (accumulator: any, currentVaule: any) =>
+                          accumulator + currentVaule.amount,
+                        0
+                      ) +
+                      totalAmount
+                        .filter((item: any) => item.amount > 0)
+                        .reduce(
+                          (accumulator: any, currentVaule: any) =>
+                            accumulator + currentVaule.amount,
+                          0
+                        )
+                  )}
                 </span>
               </div>
             </div>
@@ -148,27 +155,27 @@ function CreditRecord() {
         {/* Customers */}
         <span className="text-sm px-3 pb-3">People</span>
         <hr />
-        
-          <div className="flex-col flex  overflow-y-auto">
-            {people
-              ?.filter(({ user_name }: { user_name: string }) =>
-                user_name
-                  ?.toLocaleLowerCase()
-                  ?.includes(searchString.toLocaleLowerCase())
-              )
-              .map((user: any) => (
-                <UserTile
-                  key={user?.id}
-                  user={user}
-                  totalAmount={getAcountedAmountByUser(user)}
-                  selected_user={filterRecordByUserId}
-                  onClick={() => {
-                    setFilterRecordByUserId(user);
-                    SetshowAllTransactions(false);
-                  }}
-                />
-              ))}
-          </div>
+
+        <div className="flex-col flex  overflow-y-auto">
+          {people
+            ?.filter(({ user_name }: { user_name: string }) =>
+              user_name
+                ?.toLocaleLowerCase()
+                ?.includes(searchString.toLocaleLowerCase())
+            )
+            .map((user: any) => (
+              <UserTile
+                key={user?.id}
+                user={user}
+                totalAmount={getAcountedAmountByUser(user)}
+                selected_user={filterRecordByUserId}
+                onClick={() => {
+                  setFilterRecordByUserId(user);
+                  SetshowAllTransactions(false);
+                }}
+              />
+            ))}
+        </div>
       </div>
       {/* main content */}
       <div className="flex-col  flex flex-1">
@@ -217,7 +224,12 @@ function CreditRecord() {
                     : "text-red-500"
                 }`}
               >
-                ${Math.abs(getAcountedAmountByUser(filterRecordByUserId))}
+                ₹
+                {Intl.NumberFormat("en-IN", {
+                  maximumSignificantDigits: 3,
+                }).format(
+                  Math.abs(getAcountedAmountByUser(filterRecordByUserId))
+                )}
               </span>
             </div>
           )}
@@ -229,7 +241,7 @@ function CreditRecord() {
             <AiOutlineMore />
           </button>
         </div>
-        <div className="flex flex-col p-5  gap-5 overflow-y-auto">
+        <div className="flex flex-col p-5 flex-1 gap-5 overflow-y-auto">
           {creditRecords
 
             .filter((item: any) => {
@@ -245,7 +257,7 @@ function CreditRecord() {
               <TransactionBubble key={item?.id} item={item} />
             ))}
         </div>
-        <div className="flex px-5 flex-row-reverse">
+        <div className="flex px-5 py-2 flex-row-reverse">
           <button className="bg-green-500 font-semibold text-white rounded-full text-sm py-3 px-5 w-40">
             Add entry
           </button>

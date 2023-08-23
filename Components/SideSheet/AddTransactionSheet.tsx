@@ -25,9 +25,9 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
   // const [open, setOpen] = useState(false);
   const [selectCategory, setselectCategory] = useState<any>(null);
   const [categories, setCategories] = useState<any[]>([]);
-  const [transactionType, setTransactionType] = useState("Income");
+  const [transactionType, setTransactionType] = useState<string>("expense");
   const [showTransactionType, setShowTransactionType] = useState(false);
-  const [amountInput, setAmountInput] = useState<number>();
+  const [amountInput, setAmountInput] = useState<number>(0);
   const [description, setDescription] = useState("");
   const [date, setDate] = useState<Date>();
 
@@ -73,8 +73,8 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
       <SheetTrigger className="bg-green-600 w-full text-white rounded-md p-2">
         Add Transaction
       </SheetTrigger>
-      <SheetContent className="bg-white">
-        <div className="flex-col flex items-center min-h-screen bg-white  gap-3 ">
+      <SheetContent className="bg-white ">
+        <div className="flex-col flex items-center min-h-screen  bg-white  gap-3 ">
           <div className=" max-w-sm overflow-hidden my-4  flex flex-col items-center">
             <span className="text-sm my-3">Enter Amount</span>
 
@@ -126,20 +126,17 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
             </Popover>
             {/*  */}
             <div className="flex flex-col flex-1  items-stretch">
-              <Select>
+              <Select
+                onValueChange={(val) => {
+                  setTransactionType(val);
+                }}
+              >
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Theme" />
+                  <SelectValue placeholder={transactionType} />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
-                  {["Income", "Expense"].map((item: string) => (
-                    <SelectItem
-                      key={item}
-                      value={item}
-                      onClick={() => setTransactionType(item)}
-                    >
-                      {item}
-                    </SelectItem>
-                  ))}
+                  <SelectItem value={"income"}>Income</SelectItem>
+                  <SelectItem value={"expense"}>Expense</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -158,17 +155,17 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
           <button
             className="bg-green-600 w-full text-white rounded-md p-2"
             onClick={() => {
-              handleSubmit({
+              console.log({
                 type: transactionType,
                 amount: amountInput,
                 description: description,
-                categories: selectCategory?.name,
+                categories: selectCategory,
                 date: date?.getTime(),
               });
-              setOpen(!open);
+              // setOpen(!open);
               setAmountInput(0);
               setselectCategory("");
-              setTransactionType("");
+              setTransactionType("expense");
               setDescription("");
             }}
           >
@@ -180,12 +177,12 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
                 type: transactionType,
                 amount: amountInput,
                 description: description,
-                categories: selectCategory?.name,
-                date: date?.getMilliseconds(),
+                categories: selectCategory,
+                date: date?.getTime(),
               });
               setAmountInput(0);
-              setselectCategory("Expense");
-              setTransactionType("");
+              setselectCategory("");
+              setTransactionType("expense");
               setDescription("");
             }}
             className="bg-slate-300 text-slate-900 w-full rounded-md p-2"

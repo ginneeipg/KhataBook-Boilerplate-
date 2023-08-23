@@ -1,3 +1,5 @@
+import { amountWithComma } from "@/helperFunction/formater";
+
 function TransactionBubble({ item }: { item: any }) {
   return (
     <div
@@ -21,7 +23,7 @@ function TransactionBubble({ item }: { item: any }) {
           } gap-1  text-xs text-slate-600`}
         >
           <span>{item?.isSent ? "You" : item?.participant?.user_name}</span>
-          {!item?.isSent&&<span>·</span>}
+          {!item?.isSent && <span>·</span>}
           <span>{!item?.isSent && item?.participant?.phone}</span>
         </div>
         <div className="rounded-xl bg-white  border p-3 flex flex-col cursor-pointer hover:shadow-md">
@@ -36,7 +38,9 @@ function TransactionBubble({ item }: { item: any }) {
               }).format(item?.date)}
             </span>
           </div>
-          <span className="text-2xl font-semibold">${item?.amount}</span>
+          <span className="text-2xl font-semibold">
+            ${amountWithComma(item?.amount)}
+          </span>
           <span className="text-sm py-1">{item?.description}</span>
         </div>
       </div>
