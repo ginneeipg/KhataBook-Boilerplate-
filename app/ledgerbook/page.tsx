@@ -19,7 +19,7 @@ function LeaderBook() {
   const [searchString, setSearchString] = useState<string>("");
   const [enableFilters, setEnableFilters] = useState<boolean>(false);
   const [transactions, setTransactions] = useState<any>([]);
-
+  const [filterDate, setFilterDate] = useState<string>("This months");
   const [showSheet, setShowSheet] = useState(false);
 
   const [open, setOpen] = useState(false);
@@ -40,6 +40,18 @@ function LeaderBook() {
     transactions?.map((item: any) => item.categories)
   );
 
+  const filteredList = transactions
+    .filter((item: any) =>
+      tabBarIndex === "all" ? true : item?.type?.toLowerCase() === tabBarIndex
+    )
+    .filter(({ description }: { description: string }) =>
+      description
+        ?.toLocaleLowerCase()
+        ?.includes(searchString.toLocaleLowerCase())
+    );
+
+  const filteredIndex = filteredList.length;
+
   return (
     <>
       <div className="flex flex-col h-screen overflow-scroll ">
@@ -51,6 +63,8 @@ function LeaderBook() {
           setEnableFilters={setEnableFilters}
           tabBarIndex={tabBarIndex}
           setTabBarIndex={setTabBarIndex}
+          filterDate={filterDate}
+          setFilterDate={setFilterDate}
         />
         {/* main */}
         <div className="flex flex-row items-start  mx-5 mt-3 gap-3">
@@ -82,86 +96,93 @@ function LeaderBook() {
                 </span>
               </div>
               <hr className="border" />
-              {transactions
-                .filter((item: any) =>
-                  tabBarIndex === "all"
-                    ? true
-                    : item?.type?.toLowerCase() === tabBarIndex
-                )
-                .filter(({ description }: { description: string }) =>
-                  description
-                    ?.toLocaleLowerCase()
-                    ?.includes(searchString.toLocaleLowerCase())
-                )
-                .map((item: any) => {
-                  return (
-                    <div key={item?.id} className="flex-col flex">
-                      <div className="flex-row flex items-center  bg-white hover:bg-slate-50 cursor-pointer py-3 px-5 gap-2">
-                        <div className="flex-1 flex flex-col gap-2 ">
-                          <span className="text-sm">{item?.description}</span>
-                          <div className="text-[0.625rem] font-light text-slate-500 flex flex-row gap-3 items-center">
-                            <div className="flex flex-row gap-2 items-center">
-                              <span>Receipt:</span>
-                              <div className="bg-green-50 rounded-md text-green-600 border border-green-200 px-2 py-[0.05rem] flex flex-row items-center gap-1">
-                                <AiOutlineFileImage />
-                                <span>Image.jpeg</span>
+              {filteredIndex === 0 ? (
+                <div className=" h-72 flex flex-col items-center justify-center gap-1 bg-white">
+                  <span className="text-3xl text-center font-bold">
+                    No record found
+                  </span>
+                  <span className="text-slate-600">
+                    There isn't transaction with it.{" "}
+                  </span>
+                </div>
+              ) : (
+                filteredList
+                  .sort((a: any, b: any) => b?.date - a?.date)
+                  .map((item: any) => {
+                    return (
+                      <div key={item?.id} className="flex-col flex">
+                        <div className="flex-row flex items-center  bg-white hover:bg-slate-50 cursor-pointer py-3 px-5 gap-2">
+                          <div className="flex-1 flex flex-col gap-2 ">
+                            <span className="text-sm">{item?.description}</span>
+                            <div className="text-[0.625rem] font-light text-slate-500 flex flex-row gap-3 items-center">
+                              <div className="flex flex-row gap-2 items-center">
+                                <span>Receipt:</span>
+                                <div className="bg-green-50 rounded-md text-green-600 border border-green-200 px-2 py-[0.05rem] flex flex-row items-center gap-1">
+                                  <AiOutlineFileImage />
+                                  <span>Image.jpeg</span>
+                                </div>
                               </div>
-                            </div>
-                            <div className="flex flex-row gap-1 items-center">
-                              <span>Category:</span>
-                              <div className="bg-orange-50 rounded-md text-orange-600 border border-orange-200 px-1 py-[0.05rem] flex flex-row items-center gap-1">
-                                <AiOutlineUnorderedList />
-                                <span>{item?.categories}</span>
+                              <div className="flex flex-row gap-1 items-center">
+                                <span>Category:</span>
+                                <div className="bg-orange-50 rounded-md text-orange-600 border border-orange-200 px-1 py-[0.05rem] flex flex-row items-center gap-1">
+                                  <AiOutlineUnorderedList />
+                                  <span>{item?.categories}</span>
+                                </div>
                               </div>
-                            </div>
-                            <div className="flex flex-row gap-1 items-center">
-                              <span>Date:</span>
-                              <div className="bg-violet-50 rounded-md text-violet-600 border border-violet-200 px-1 py-[0.05rem] flex flex-row items-center gap-1">
-                                <AiOutlineCalendar />
-                                <span className=" text-neutral-500 ">
-                                  {new Intl.DateTimeFormat("en-GB", {
-                                    dateStyle: "medium",
-                                    // timeStyle: "short",
-                                  }).format(item?.date)}
-                                </span>
+                              <div className="flex flex-row gap-1 items-center">
+                                <span>Date:</span>
+                                <div className="bg-violet-50 rounded-md text-violet-600 border border-violet-200 px-1 py-[0.05rem] flex flex-row items-center gap-1">
+                                  <AiOutlineCalendar />
+                                  <span className=" text-neutral-500 ">
+                                    {new Intl.DateTimeFormat("en-GB", {
+                                      dateStyle: "medium",
+                                      // timeStyle: "short",
+                                    }).format(item?.date)}
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div className="flex-col flex items-start gap-1">
-                          <span className="font-medium ">
-                            ₹
-                            {Intl.NumberFormat("en-IN", {
-                              maximumSignificantDigits: 3,
-                            }).format(item?.amount)}
-                          </span>
-                          <div
-                            className={` text-[0.635rem] rounded-md border ${
-                              item?.type === "Expense"
-                                ? "bg-red-50 text-red-600  border-red-20"
-                                : "bg-green-50 text-green-600  border-green-20"
-                            }0 px-2 py-[0.05rem] flex flex-row items-center gap-1`}
-                          >
-                            <span>
-                              {item?.type === "Expense" ? "Expense" : "Income"}
+                          <div className="flex-col flex items-center gap-1">
+                            <span className="font-medium ">
+                              ₹
+                              {Intl.NumberFormat("en-IN", {
+                                maximumSignificantDigits: 3,
+                              }).format(item?.amount)}
                             </span>
+                            <div
+                              className={` text-[0.635rem] rounded-md border ${
+                                item?.type === "expense"
+                                  ? "bg-red-50 text-red-600  border-red-20"
+                                  : "bg-green-50 text-green-600  border-green-20"
+                              }0 px-2 py-[0.05rem] flex flex-row items-center gap-1`}
+                            >
+                              <span>
+                                {item?.type === "expense"
+                                  ? "Expense"
+                                  : "Income"}
+                              </span>
+                            </div>
                           </div>
-                        </div>
 
-                        {item?.type === "Expense" ? (
-                          <FiArrowUpRight size={25} className="text-red-500" />
-                        ) : (
-                          <FiArrowDownLeft
-                            size={25}
-                            className="text-green-500"
-                          />
-                        )}
+                          {item?.type === "expense" ? (
+                            <FiArrowUpRight
+                              size={25}
+                              className="text-red-500"
+                            />
+                          ) : (
+                            <FiArrowDownLeft
+                              size={25}
+                              className="text-green-500"
+                            />
+                          )}
+                        </div>
+                        <hr />
                       </div>
-                      <hr />
-                    </div>
-                  );
-                })}
+                    );
+                  })
+              )}
             </div>
           </div>
 
@@ -240,12 +261,12 @@ function LeaderBook() {
                     maximumSignificantDigits: 3,
                   }).format(
                     transactions
-                      .filter((item: any) => item?.type === "Income")
+                      .filter((item: any) => item?.type === "income")
                       .reduce((accumulator: any, currentValue: any) => {
                         return accumulator + currentValue.amount;
                       }, 0) -
                       transactions
-                        .filter((item: any) => item?.type === "Expense")
+                        .filter((item: any) => item?.type === "expense")
                         .reduce((accumulator: any, currentValue: any) => {
                           return accumulator + currentValue.amount;
                         }, 0)
@@ -262,7 +283,7 @@ function LeaderBook() {
                       maximumSignificantDigits: 3,
                     }).format(
                       transactions
-                        .filter((item: any) => item?.type === "Income")
+                        .filter((item: any) => item?.type === "income")
                         .reduce((accumulator: any, currentValue: any) => {
                           return accumulator + currentValue.amount;
                         }, 0)
@@ -278,7 +299,7 @@ function LeaderBook() {
                       maximumSignificantDigits: 3,
                     }).format(
                       transactions
-                        .filter((item: any) => item?.type === "Expense")
+                        .filter((item: any) => item?.type === "expense")
                         .reduce((accumulator: any, currentValue: any) => {
                           return accumulator + currentValue.amount;
                         }, 0)

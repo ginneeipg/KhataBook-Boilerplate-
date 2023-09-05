@@ -155,14 +155,14 @@ function SidebarSheet({ open, setOpen }: { open: boolean; setOpen: any }) {
           <button
             className="bg-green-600 w-full text-white rounded-md p-2"
             onClick={() => {
-              console.log({
+              handleSubmit({
                 type: transactionType,
                 amount: amountInput,
                 description: description,
                 categories: selectCategory,
                 date: date?.getTime(),
               });
-              // setOpen(!open);
+              setOpen(!open);
               setAmountInput(0);
               setselectCategory("");
               setTransactionType("expense");

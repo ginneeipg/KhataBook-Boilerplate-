@@ -63,7 +63,7 @@ export function ComboboxDemo({
               </div>
 
               <div className="my-2"></div>
-              <AddCategorySheet value={value} setValue={setValue}/>
+              <AddCategorySheet value={value} setValue={setValue} closePopup={()=>setOpen(false)}/>
             </div>
           </CommandEmpty>
           <CommandGroup>
@@ -80,7 +80,7 @@ export function ComboboxDemo({
                   </div>
 
                   <div className="my-2"></div>
-                  <AddCategorySheet value={value} setValue={setValue}/>
+                  <AddCategorySheet value={value} setValue={setValue} closePopup={()=>setOpen(false)} />
                 </div>
               )}
               {list.map((category: any) => (

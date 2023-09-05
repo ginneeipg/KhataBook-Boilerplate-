@@ -7,6 +7,14 @@ import {
 import { BiSearchAlt } from "react-icons/bi";
 import { VscListFilter } from "react-icons/vsc";
 import { BsCalendarDate } from "react-icons/bs";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@radix-ui/react-select";
+import { Portal } from "@radix-ui/react-dialog";
 
 function LedgerBookNavBar({
   searchString,
@@ -15,6 +23,8 @@ function LedgerBookNavBar({
   setTabBarIndex,
   enableFilters,
   setEnableFilters,
+  filterDate,
+  setFilterDate,
 }: {
   searchString: string;
   setSearchString: any;
@@ -22,9 +32,13 @@ function LedgerBookNavBar({
   setTabBarIndex: any;
   enableFilters: boolean;
   setEnableFilters: any;
+  filterDate: string;
+  setFilterDate: any;
 }) {
+  console.log(filterDate);
+
   return (
-    <div className="flex-col flex  bg-white sticky top-0 z-50  py-2 px-5 gap-2">
+    <div className="flex-col flex  bg-white border-b sticky top-0 z-50  py-2 px-5 gap-2">
       <div className="flex flex-row items-center  justify-between  gap-2">
         <div className="flex-row flex  items-center justify-start gap-2 bg-white border mr-auto dark:bg-zinc-800 px-2 py-1 rounded-md w-full sm:w-1/2 md:w-1/4     focus-within:flex-grow  focus-within:border-none focus-within:ring-1 focus-within:ring-green-600 ">
           <BiSearchAlt size={25} className="text-neutral-300" />
@@ -36,12 +50,47 @@ function LedgerBookNavBar({
             className="bg-transparent outline-none text-sm flex-1"
           />
         </div>
+        {filterDate === "Custom" && <div>130920</div>}
 
         <div
-          className={`rounded-full  py-1 px-3 cursor-pointer border border-slate-200  flex flex-row items-center justify-between gap-2 `}
+          className={`rounded-full  py-1 px-3 cursor-pointer border border-slate-200 bg-white flex flex-row items-center justify-between gap-2 `}
         >
           <BsCalendarDate />
-          <span className="text-sm">This month</span>
+          <Select
+            onValueChange={(val) => {
+              setFilterDate(val);
+            }}
+          >
+            <SelectTrigger className="outline-none bg-white text-sm">
+              {filterDate}
+            </SelectTrigger>
+            <SelectContent className="bg-white relative w-44 top-20 text-sm  rounded-md overflow-hidden shadow-md border ">
+              <SelectItem
+                value={"Today"}
+                className="py-2 px-4 hover:bg-slate-50 outline-none"
+              >
+                Today
+              </SelectItem>
+              <SelectItem
+                value={"Last week"}
+                className="py-2 px-4 hover:bg-slate-50 outline-none"
+              >
+                Last Week
+              </SelectItem>
+              <SelectItem
+                value={"This month"}
+                className="py-2 px-4 hover:bg-slate-50 outline-none"
+              >
+                This month
+              </SelectItem>
+              <SelectItem
+                value={"Custom"}
+                className="py-2 px-4 hover:bg-slate-50 outline-none"
+              >
+                Custom date range
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         <div className="rounded-full  border  border-slate-200 flex flex-row  text-sm">

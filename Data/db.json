@@ -1,118 +1,78 @@
 {
   "transaction": [
     {
-      "type": "Expense",
-      "amount": 370,
-      "description": "Chicken Biryani Combo",
-      "categories": "office lunch",
-      "date": 1691087400000,
+      "type": "income",
+      "amount": 48000,
+      "description": "Office salary from Newton.ai for Dec 2022",
+      "categories": "salary",
+      "date": 1672684200000,
       "id": 1
     },
     {
-      "type": "Expense",
-      "amount": 760,
-      "description": "Oppenhimmer ",
-      "categories": "movie",
-      "date": 1690482600000,
+      "type": "expense",
+      "amount": 3500,
+      "description": "Vivan's School fees for Oct 2022",
+      "categories": "education",
+      "date": 1667586600000,
       "id": 2
     },
     {
-      "type": "Expense",
-      "amount": 23,
-      "description": "afdcwedcw",
-      "categories": "transportation",
-      "date": 1691001000000,
+      "type": "expense",
+      "amount": 3500,
+      "description": "Vivan's School fees for Nov 2022",
+      "categories": "education",
+      "date": 1670005800000,
       "id": 3
     },
     {
-      "type": "Expense",
-      "amount": 2000,
-      "description": "Udemy Course",
-      "categories": "education",
-      "date": 1689100200000,
+      "type": "expense",
+      "amount": 6790,
+      "description": "For electricity bill from oct to dec",
+      "categories": "electricity",
+      "date": 1672857000000,
       "id": 4
     },
     {
-      "type": "Income",
-      "amount": 18063,
-      "description": "Internship Stipend",
+      "type": "income",
+      "amount": 48000,
+      "description": "Office salary for jan 2023",
       "categories": "salary",
-      "date": 1690828200000,
-      "id": 6
-    },
-    {
-      "type": "Expense",
-      "amount": 300,
-      "description": "medicine",
-      "categories": "misc",
-      "date": 1691087400000,
-      "id": 7
-    },
-    {
-      "type": "",
-      "amount": 32,
-      "description": "SBg",
-      "categories": "room rent",
-      "date": 1691778600000,
-      "id": 8
+      "date": 1677781800000,
+      "id": 5
     },
     {
       "type": "expense",
-      "amount": 3244,
-      "description": "Lorem ipsum is the stansard",
-      "categories": "misc",
-      "date": 1692729000000,
-      "id": 9
+      "amount": 8400,
+      "description": "For Car repairing and servicing ",
+      "categories": "car maintenance ",
+      "date": 1685989800000,
+      "id": 6
     },
     {
-      "type": "",
-      "amount": 120,
-      "description": "adwa",
-      "categories": "movie",
-      "date": 1691778600000,
-      "id": 10
+      "type": "income",
+      "amount": 4500,
+      "description": "wefqwrf",
+      "categories": "car maintenance",
+      "date": 1697049000000,
+      "id": 7
     }
   ],
   "categories": [
     {
-      "name": "food",
+      "name": "salary",
       "id": 1
     },
     {
-      "name": "room rent",
+      "name": "education",
       "id": 2
     },
     {
-      "name": "office lunch",
+      "name": "electricity",
       "id": 3
     },
     {
-      "name": "movie",
+      "name": "car maintenance ",
       "id": 4
-    },
-    {
-      "name": "transportation",
-      "id": 5
-    },
-    {
-      "name": "education",
-      "id": 6
-    },
-    {
-      "name": "cccc",
-      "id": 7
-    },
-    {
-      "name": "salary",
-      "id": 8
-    },
-    {
-      "name": "misc",
-      "id": 9
-    },
-    {
-      "name": "sanck",
-      "id": 10
     }
   ],
   "credit_record": [

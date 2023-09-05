@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
-function AddCategorySheet({value, setValue}:{value:any, setValue:any}) {
+function AddCategorySheet({
+  value,
+  setValue,
+  closePopup,
+}: {
+  value: any;
+  setValue: any;
+  closePopup: any;
+}) {
   const [category, setCategory] = useState<string>("");
   const [open, setOpen] = useState(false);
 
@@ -13,11 +21,16 @@ function AddCategorySheet({value, setValue}:{value:any, setValue:any}) {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => {
+      .then(async (response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        return response.json();
+        console.log(await response.json());
+        setOpen(!open);
+        setValue(data?.name);
+        closePopup();
+
+        // return response.json();
       })
       .then((responseData) => {
         // Handle the response data
@@ -29,9 +42,6 @@ function AddCategorySheet({value, setValue}:{value:any, setValue:any}) {
       });
 
     // console.log(JSON.stringify(category));
-
-    setOpen(!open);
-    setValue(data)
   };
 
   return (
