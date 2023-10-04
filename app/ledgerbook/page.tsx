@@ -13,6 +13,7 @@ import {
   AiOutlineFileImage,
   AiOutlineUnorderedList,
 } from "react-icons/ai";
+import { amountWithComma } from "@/helperFunction/formater";
 
 function LeaderBook() {
   const [tabBarIndex, setTabBarIndex] = useState<string>("all");
@@ -257,9 +258,7 @@ function LeaderBook() {
                 <span className="text-xs font-normal">Net balance</span>
                 <span className="font-bold text-2xl">
                   ₹
-                  {new Intl.NumberFormat("en-IN", {
-                    maximumSignificantDigits: 3,
-                  }).format(
+                  {amountWithComma(
                     transactions
                       .filter((item: any) => item?.type === "income")
                       .reduce((accumulator: any, currentValue: any) => {
@@ -279,9 +278,7 @@ function LeaderBook() {
                   Total Income:{" "}
                   <b>
                     ₹
-                    {new Intl.NumberFormat("en-IN", {
-                      maximumSignificantDigits: 3,
-                    }).format(
+                    {amountWithComma(
                       transactions
                         .filter((item: any) => item?.type === "income")
                         .reduce((accumulator: any, currentValue: any) => {
@@ -295,9 +292,7 @@ function LeaderBook() {
                   Total Expenses:{" "}
                   <b>
                     ₹
-                    {new Intl.NumberFormat("en-IN", {
-                      maximumSignificantDigits: 3,
-                    }).format(
+                    {amountWithComma(
                       transactions
                         .filter((item: any) => item?.type === "expense")
                         .reduce((accumulator: any, currentValue: any) => {
@@ -324,9 +319,7 @@ function LeaderBook() {
 
                   <span className="font-semibold text-sm">
                     ₹
-                    {new Intl.NumberFormat("en-IN", {
-                      maximumSignificantDigits: 3,
-                    }).format(
+                    {amountWithComma(
                       transactions
                         .filter(
                           (item: any) => item?.categories === categoryItem

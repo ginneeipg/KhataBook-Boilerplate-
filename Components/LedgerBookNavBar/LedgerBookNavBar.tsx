@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AiOutlineMore,
   AiOutlinePrinter,
@@ -15,6 +15,14 @@ import {
   SelectValue,
 } from "@radix-ui/react-select";
 import { Portal } from "@radix-ui/react-dialog";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@radix-ui/react-popover";
+import { Button, DayPicker } from "react-day-picker";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "../ui/calendar";
 
 function LedgerBookNavBar({
   searchString,
@@ -35,7 +43,7 @@ function LedgerBookNavBar({
   filterDate: string;
   setFilterDate: any;
 }) {
-  console.log(filterDate);
+  const [selected, setSelected] = useState<Date | undefined>(new Date());
 
   return (
     <div className="flex-col flex  bg-white border-b sticky top-0 z-50  py-2 px-5 gap-2">
@@ -50,7 +58,23 @@ function LedgerBookNavBar({
             className="bg-transparent outline-none text-sm flex-1"
           />
         </div>
-        {filterDate === "Custom" && <div>130920</div>}
+        {filterDate === "Custom" && (
+          <Popover >
+            <PopoverTrigger>{selected?.toString()}</PopoverTrigger>
+            <PopoverContent   >
+              <Calendar
+                mode="single"
+                selected={selected}
+                onSelect={setSelected}
+                initialFocus
+                showOutsideDays={false}
+              
+                
+                fromDate={new Date()}
+              />
+            </PopoverContent>
+          </Popover>
+        )}
 
         <div
           className={`rounded-full  py-1 px-3 cursor-pointer border border-slate-200 bg-white flex flex-row items-center justify-between gap-2 `}

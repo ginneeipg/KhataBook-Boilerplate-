@@ -16,6 +16,8 @@ function CreditRecord() {
   const [showAllTransactions, SetshowAllTransactions] = useState<boolean>(true);
 
   const [totalAmount, setTotalAmount] = useState<any[]>([]);
+  const tabList = ["People", "Group", ];
+  const [selectTabIndex, setSelectTabIndex] = useState<number>(0);
 
   useEffect(() => {
     getData();
@@ -80,7 +82,7 @@ function CreditRecord() {
       <div className="flex-col flex  bg-white w-1/3 border-r ">
         <div className="flex-col flex gap-3 p-3">
           <div className="flex flex-row justify-between">
-            <span className="font-bold text-xl">Credits</span>
+            <span className="font-bold text-xl">Split Bill </span>
           </div>
           <div className="flex-row flex  items-center justify-start gap-2 bg-slate-50 border p-2 rounded-md  ">
             <BiSearchAlt size={25} />
@@ -153,7 +155,21 @@ function CreditRecord() {
           </div>
         </div>
         {/* Customers */}
-        <span className="text-sm px-3 pb-3">People</span>
+        <div className="flex">
+          {tabList.map((tabMenu: string, index: number) => (
+            <button
+              key={index}
+              className={`text-sm px-3 pb-3 border-b-2 ${
+                index === selectTabIndex && "text-green-500 border-green-500"
+              }`}
+              onClick={() => setSelectTabIndex(index)}
+            >
+              {tabMenu}
+            </button>
+          ))}
+
+          <div className="border-b-2 flex-1"></div>
+        </div>
         <hr />
 
         <div className="flex-col flex  overflow-y-auto">

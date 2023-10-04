@@ -2,77 +2,277 @@
   "transaction": [
     {
       "type": "income",
-      "amount": 48000,
-      "description": "Office salary from Newton.ai for Dec 2022",
-      "categories": "salary",
-      "date": 1672684200000,
-      "id": 1
-    },
-    {
-      "type": "expense",
-      "amount": 3500,
-      "description": "Vivan's School fees for Oct 2022",
-      "categories": "education",
-      "date": 1667586600000,
+      "amount": 18063,
+      "description": "Rehook internship stipend",
+      "categories": "stipend",
+      "date": 1693506600000,
       "id": 2
     },
     {
       "type": "expense",
-      "amount": 3500,
-      "description": "Vivan's School fees for Nov 2022",
-      "categories": "education",
-      "date": 1670005800000,
+      "amount": 9,
+      "description": "Arijit's Xerox",
+      "categories": "misc",
+      "date": 1693852200000,
       "id": 3
     },
     {
       "type": "expense",
-      "amount": 6790,
-      "description": "For electricity bill from oct to dec",
-      "categories": "electricity",
-      "date": 1672857000000,
+      "amount": 70,
+      "description": "momo",
+      "categories": "evening snack",
+      "date": 1693852200000,
       "id": 4
     },
     {
-      "type": "income",
-      "amount": 48000,
-      "description": "Office salary for jan 2023",
-      "categories": "salary",
-      "date": 1677781800000,
+      "type": "expense",
+      "amount": 75,
+      "description": "Office lunch",
+      "categories": "office lunch",
+      "date": 1693852200000,
       "id": 5
     },
     {
       "type": "expense",
-      "amount": 8400,
-      "description": "For Car repairing and servicing ",
-      "categories": "car maintenance ",
-      "date": 1685989800000,
+      "amount": 4183,
+      "description": "For papa's office rail ticket  ",
+      "categories": "misc",
+      "date": 1693852200000,
       "id": 6
     },
     {
-      "type": "income",
-      "amount": 4500,
-      "description": "wefqwrf",
-      "categories": "car maintenance",
-      "date": 1697049000000,
+      "type": "expense",
+      "amount": 130,
+      "description": "Office lunch",
+      "categories": "office lunch",
+      "date": 1693765800000,
       "id": 7
+    },
+    {
+      "type": "expense",
+      "amount": 125,
+      "description": "Paid to Arijit for \nchicken (55) and egg fried rice (70)",
+      "categories": "misc",
+      "date": 1693765800000,
+      "id": 8
+    },
+    {
+      "type": "income",
+      "amount": 100,
+      "description": "Received for Zomato order from arijit",
+      "categories": "misc",
+      "date": 1693593000000,
+      "id": 9
+    },
+    {
+      "type": "expense",
+      "amount": 550,
+      "description": "paid back to Arijit for paying my bill, when I didn't carry money.",
+      "categories": "misc",
+      "date": 1693593000000,
+      "id": 10
+    },
+    {
+      "type": "expense",
+      "amount": 124,
+      "description": "purchased syrup for myself",
+      "categories": "medicine & healthcare",
+      "date": 1693593000000,
+      "id": 11
+    },
+    {
+      "type": "expense",
+      "amount": 186,
+      "description": "paid for office lunch for me and Shailav Bhaiya ",
+      "categories": "office lunch",
+      "date": 1693506600000,
+      "id": 12
+    },
+    {
+      "type": "income",
+      "amount": 110,
+      "description": "paid back for office lunch from Shailav Bhaiya",
+      "categories": "food",
+      "date": 1693506600000,
+      "id": 13
+    },
+    {
+      "type": "income",
+      "amount": 500,
+      "description": "Received from Nilesh for paying wifi bill",
+      "categories": "misc",
+      "date": 1693506600000,
+      "id": 14
+    },
+    {
+      "type": "expense",
+      "amount": 472,
+      "description": "Paid Wifi fees for Home",
+      "categories": "misc",
+      "date": 1693506600000,
+      "id": 15
+    },
+    {
+      "type": "expense",
+      "amount": 70,
+      "description": "Paid to Prakash Bhaiya for office lunch.",
+      "categories": "office lunch",
+      "date": 1693420200000,
+      "id": 16
+    },
+    {
+      "type": "expense",
+      "amount": 77,
+      "description": "Paid to Rapido for transiting from Ram Kumari Didi's house on Rakhi.",
+      "categories": "transportation",
+      "date": 1693420200000,
+      "id": 17
+    },
+    {
+      "type": "expense",
+      "amount": 80,
+      "description": "Purchased chocolates and chips for Ram Kumari Didi's children",
+      "categories": "misc",
+      "date": 1693420200000,
+      "id": 18
+    },
+    {
+      "type": "expense",
+      "amount": 97,
+      "description": "Paid for Rapido to Ram Kumari Didi's house",
+      "categories": "transportation",
+      "date": 1693333800000,
+      "id": 19
+    },
+    {
+      "type": "expense",
+      "amount": 155,
+      "description": "Office lunch (Biryani)",
+      "categories": "office lunch",
+      "date": 1693333800000,
+      "id": 20
+    },
+    {
+      "type": "expense",
+      "amount": 99,
+      "description": "Office lunch (South meals)",
+      "categories": "office lunch",
+      "date": 1693247400000,
+      "id": 21
+    },
+    {
+      "type": "expense",
+      "amount": 188,
+      "description": "Purchase Cloth basket from Amazon. 99X2=188",
+      "categories": "misc",
+      "date": 1693161000000,
+      "id": 22
+    },
+    {
+      "type": "expense",
+      "amount": 55,
+      "description": "Purchased Bread for me and arijit. 55X2 =110 (Arijit paid 55)",
+      "categories": "food",
+      "date": 1693161000000,
+      "id": 23
+    },
+    {
+      "type": "expense",
+      "amount": 75,
+      "description": "Office lunch (Mysore masala dhosa)",
+      "categories": "office lunch",
+      "date": 1693161000000,
+      "id": 24
+    },
+    {
+      "type": "income",
+      "amount": 1000,
+      "description": "Received from Papa",
+      "categories": "misc",
+      "date": 1693161000000,
+      "id": 25
+    },
+    {
+      "type": "expense",
+      "amount": 39,
+      "description": "paid for breakfast (idli at Adigas)",
+      "categories": "food",
+      "date": 1693161000000,
+      "id": 26
+    },
+    {
+      "type": "expense",
+      "amount": 75,
+      "description": "Office lunch (mysore masala dhosa)",
+      "categories": "office lunch",
+      "date": 1693938600000,
+      "id": 27
+    },
+    {
+      "type": "expense",
+      "amount": 60,
+      "description": "Momo",
+      "categories": "evening snack",
+      "date": 1693938600000,
+      "id": 28
+    },
+    {
+      "type": "expense",
+      "amount": 890,
+      "description": "Bought a Massage Gun",
+      "categories": "accessories ",
+      "date": 1695493800000,
+      "id": 29
+    },
+    {
+      "type": "expense",
+      "amount": 675,
+      "description": "cricket",
+      "categories": "misc",
+      "date": 1696012200000,
+      "id": 30
+    },
+    {
+      "type": "expense",
+      "amount": 80,
+      "description": "Momo",
+      "categories": "evening snack",
+      "date": 1696271400000,
+      "id": 31
     }
   ],
   "categories": [
     {
-      "name": "salary",
+      "name": "office lunch",
       "id": 1
     },
     {
-      "name": "education",
+      "name": "stipend",
       "id": 2
     },
     {
-      "name": "electricity",
+      "name": "evening snack",
       "id": 3
     },
     {
-      "name": "car maintenance ",
+      "name": "misc",
       "id": 4
+    },
+    {
+      "name": "food",
+      "id": 5
+    },
+    {
+      "name": "medicine & healthcare",
+      "id": 6
+    },
+    {
+      "name": "transportation",
+      "id": 7
+    },
+    {
+      "name": "accessories ",
+      "id": 8
     }
   ],
   "credit_record": [
